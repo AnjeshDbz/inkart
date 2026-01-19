@@ -1,26 +1,74 @@
 @import "tailwindcss";
 
 :root {
+  --primary: #000958;
+  --secondary: #FF681A;
   --background: #ffffff;
   --foreground: #171717;
+  --border-product: #eee;
+}
+
+
+/* Disable auto dark form controls (iOS/macOS) */
+:root {
+  color-scheme: light;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-border-product: var(--border-product);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+
+/* System dark mode disabled: keep light variables regardless of OS preference */
+/* Removed `@media (prefers-color-scheme: dark)` to prevent automatic dark styling */
 
 body {
+
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+
+
+
+/* Auto-equal height for Swiper slides */
+.todays-deal-section .swiper-wrapper {
+  align-items: stretch;
+}
+
+.todays-deal-section .swiper-slide {
+  display: flex;
+  height: auto;
+}
+
+.todays-deal-section .product-card {
+  height: 100%;
+}
+
+
+.todays-deal-section .swiper-button-prev,
+.todays-deal-section .swiper-button-next {
+  padding: 5px;
+  border-radius: 5px;
+  color: var(--primary);
 }

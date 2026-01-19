@@ -1,0 +1,27 @@
+{
+  "name": "Inkart",
+  "short_name": "Inkart",
+  "description": "Inkart Progressive Web Application",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "theme_color": "#00095b",
+  "background_color": "#00095b",
+  "dir": "auto",
+  "lang": "en-US",
+  "icons": [
+    {
+      "src": "/icon512_maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icon512_rounded.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
