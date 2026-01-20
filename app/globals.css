@@ -22,6 +22,9 @@
   --color-border-product: var(--border-product);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  /* ✅ NEW: Tailwind max-width utility */
+  --max-w-layout: var(--layout-width);
 }
 
 
@@ -71,4 +74,27 @@ body {
   padding: 5px;
   border-radius: 5px;
   color: var(--primary);
+}
+
+
+
+.slider-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+.custom-pagination .swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  background: var(--secondary)!important;
+  opacity: 0.4;
+  transition: all 0.3s ease;
+}
+
+.custom-pagination .swiper-pagination-bullet-active {
+  background: var(--primary)!important;
+  opacity: 1;
+  transform: scale(1.2);
 }

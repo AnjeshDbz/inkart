@@ -72,7 +72,7 @@ export default function ExploreByLocationSlider() {
   };
 
   return (
-    <section className="mx-auto max-w-7xl px-4 py-12">
+    <section className="mx-auto w-full md:max-w-10xl px-4 py-12">
       {/* HEADER */}
       <div className="flex items-center justify-center md:justify-between mb-8">
         <h2 className="text-xl md:text-4xl font-semibold text-brand.primary">

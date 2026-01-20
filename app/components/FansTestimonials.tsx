@@ -28,7 +28,7 @@ export default function FansTestimonials() {
 
   return (
     <>
-      <section className="mx-auto max-w-7xl px-4 py-14">
+      <section className="mx-auto w-full md:max-w-10xl px-4 py-14">
         {/* Heading */}
         <div className="flex items-center justify-center gap-4 mb-10">
           <Image

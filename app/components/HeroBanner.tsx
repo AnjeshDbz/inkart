@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function HeroBanner() {
   return (
-    <section className="mx-auto max-w-7xl px-4 py-8">
+    <section className="mx-auto w-full md:md:max-w-10xl px-4 py-8">
       <div className="flex flex-col lg:flex-row gap-3">
         {/* ================= LEFT HERO ================= */}
         <div

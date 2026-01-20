@@ -7,27 +7,32 @@ import { faHeart, faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 const products = [
   {
     id: 1,
-    title: "Kids Toy Set – Fun & Safe for Children",
-    price: 299,
+    title:
+      "Saksham, Pink Blanket, Made By Natural Sheep Cotton, Traditional Item, Pack Of 1 No, 7ft",
+    price: 574,
+    oldPrice: 816,
     image: "/images/products/toy.webp",
   },
   {
     id: 2,
-    title: "Stylish Travel Backpack – Lightweight & Durable",
-    price: 499,
+    title:
+      "Saksham, Pink Blanket, Made By Natural Sheep Cotton, Traditional Item, Pack Of 1 No, 7ft",
+    price: 574,
+    oldPrice: 816,
     image: "/images/products/bag.webp",
   },
   {
     id: 3,
-    title: "Premium Glass Water Bottle – Leak Proof",
-    price: 199,
+    title:
+      "Saksham, Pink Blanket, Made By Natural Sheep Cotton, Traditional Item, Pack Of 1 No, 7ft",
+    price: 574,
+    oldPrice: 816,
     image: "/images/products/glass.webp",
   },
 ];
-
-export default function Combos() {
+function RefinedOils() {
   return (
-    <section className="bg-white">
+    <section className="bg-[#EFEEFF]">
       <div className="mx-auto w-full md:max-w-10xl px-4 py-12">
         {/* ================= HEADING ================= */}
         <div className="flex items-center justify-center gap-4 mb-10">
@@ -40,7 +45,7 @@ export default function Combos() {
           />
 
           <h2 className="text-xl md:text-4xl font-semibold text-brand.primary text-center">
-            Combos
+            Refined Oils
           </h2>
 
           <Image
@@ -58,7 +63,7 @@ export default function Combos() {
           <div className="lg:col-span-1 h-full">
             <div className="relative h-full  min-h-[420px] rounded-2xl overflow-hidden shadow">
               <Image
-                src="/images/veg-bg.jpg" // <-- your veg image
+                src="/images/oils-bg.jpg" // <-- your veg image
                 alt="Veg Banner"
                 fill
                 className="object-cover"
@@ -67,7 +72,7 @@ export default function Combos() {
               <div className="absolute bottom-6 left-1/2 -translate-x-1/2">
                 <button
                   className="bg-primary hover:bg-secondary text-white px-8 py-3 rounded-lg font-medium transition-colors 
-    duration-200"
+           duration-200"
                 >
                   Shop Now
                 </button>
@@ -88,18 +93,18 @@ export default function Combos() {
                   <div className="absolute top-2 right-2 z-10">
                     <button
                       className="
-                 w-[30px] 
-                 h-[30px] 
-                 rounded-full 
-                 bg-white 
-                 border 
-                 border-[#d5d5d5]
-                 text-primary 
-                 hover:text-secondary 
-                 transition-colors 
-                 duration-200
-                 flex items-center justify-center
-               "
+                        w-[30px] 
+                        h-[30px] 
+                        rounded-full 
+                        bg-white 
+                        border 
+                        border-[#d5d5d5]
+                        text-primary 
+                        hover:text-secondary 
+                        transition-colors 
+                        duration-200
+                        flex items-center justify-center
+                      "
                     >
                       <FontAwesomeIcon icon={faHeart} />
                     </button>
@@ -140,3 +145,5 @@ export default function Combos() {
     </section>
   );
 }
+
+export default RefinedOils;

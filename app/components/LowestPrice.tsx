@@ -33,9 +33,9 @@ const products = [
 
 export default function LowestPrice() {
   return (
-    <section className=" bg-[#ededed]">
+    <section className=" bg-[#EFEEFF]">
 
-      <div className="mx-auto max-w-7xl px-4 py-10">
+      <div className="mx-auto w-full md:max-w-10xl px-4 py-10">
  {/* HEADING */}
       <div className="flex items-center justify-center gap-4 mb-10 relative z-20">
         <Image

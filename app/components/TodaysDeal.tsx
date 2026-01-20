@@ -71,7 +71,7 @@ const deals: Deal[] = [
 /* ================= COMPONENT ================= */
 export default function TodaysDealSwiper() {
   return (
-    <section className="relative mx-auto max-w-7xl px-4 py-14 todays-deal-section">
+    <section className="relative mx-auto w-full md:max-w-10xl px-4 py-14 todays-deal-section">
       {/* EDGE FADE MASK */}
       <div className="pointer-events-none absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-white to-transparent z-10" />
       <div className="pointer-events-none absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-white to-transparent z-10" />
