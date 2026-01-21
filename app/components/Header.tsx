@@ -158,7 +158,7 @@ export default function Header() {
                       : ""
                   }`}
                 >
-                  Shop2
+                  Shop
                 </Link>
               </li>
 
