@@ -1,4 +1,3 @@
-
 import HeroBanner from "./components/HeroBanner";
 import ExploreByLocation from "./components/ExploreByLocation";
 import FansTestimonials from "./components/FansTestimonials";
@@ -10,6 +9,9 @@ import HeroSlider from "./components/HeroSlider";
 import HomemadeCookies from "./components/HomemadeCookies";
 import FeatureStrip from "./components/FeatureStrip";
 import RefinedOils from "./components/RefinedOils";
+import CertifiedSection from "./components/CertifiedSection";
+import OurBlogs from "./components/OurBlogs";
+import CustomerFeedback from "./components/CustomerFeedback";
 
 export default function HomePage() {
   return (
@@ -30,7 +32,10 @@ export default function HomePage() {
       <HeroSlider />
       <HomemadeCookies />
       <FeatureStrip />
-      <RefinedOils /> 
+      <RefinedOils />
+      <CertifiedSection />
+      <OurBlogs />
+      <CustomerFeedback />
       {/* Other sections */}
 
       <TodaysDeal />
