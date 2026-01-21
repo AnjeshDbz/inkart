@@ -98,3 +98,14 @@ body {
   opacity: 1;
   transform: scale(1.2);
 }
+
+
+
+@keyframes slideIn {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+.animate-slide {
+  animation: slideIn 0.25s ease-out;
+}
