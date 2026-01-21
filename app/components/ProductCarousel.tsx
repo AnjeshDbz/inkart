@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import ProductCard from "./ProductCard";
-import { Product } from "../data/homepage";
+import { Product } from "../data/products"; // ✅ FIXED
 
 export default function ProductCarousel({ products }: { products: Product[] }) {
   const ref = useRef<HTMLDivElement>(null);
