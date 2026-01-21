@@ -156,7 +156,7 @@ export default function ProductPage() {
               <Link
                 key={item.id}
                 href={`/products/${item.id}`}
-                className="bg-white rounded-xl border border-gray-300 shadow-sm hover:shadow-md transition p-3 flex flex-col cursor-pointer"
+                className="bg-white rounded-xl border border-gray-300 shadow-sm hover:shadow-md transition p-2 md:p-3 flex flex-col cursor-pointer"
               >
                 {/* Image */}
                 <div className="relative w-full h-35 sm:h-78 md:h-72 overflow-hidden rounded-lg bg-white flex items-center justify-center">
@@ -187,7 +187,7 @@ export default function ProductPage() {
                     src={item.image}
                     alt={item.title}
                     fill
-                    className="object-contain p-2"
+                    className="object-contain"
                   />
                 </div>
 
@@ -211,7 +211,7 @@ export default function ProductPage() {
 
                 {/* Price */}
                 <div className="mt-2 flex items-center gap-2">
-                  <span className="font-bold text-lg">₹{item.price}</span>
+                  <span className="font-bold text-md">₹{item.price}</span>
                   <span className="text-sm line-through text-gray-400">
                     ₹{item.mrp}
                   </span>
