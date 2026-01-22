@@ -29,7 +29,9 @@ export default function ProductDetailsPage() {
     .filter((p) => p.category === product?.category && p.id !== product?.id)
     .slice(0, 4);
 
-  const [activeImage] = useState(product?.image);
+  const [activeImage, setActiveImage] = useState<string | undefined>(
+    product?.image,
+  );
   const [qty, setQty] = useState(1);
   const [tab, setTab] = useState<"desc" | "info">("desc");
 
