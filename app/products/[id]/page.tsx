@@ -17,7 +17,6 @@ import {
 // ✅ FIXED IMPORT PATH
 import { products as allProducts } from "../../data/products";
 
-
 export default function ProductDetailsPage() {
   const params = useParams();
 
@@ -27,9 +26,7 @@ export default function ProductDetailsPage() {
   const product = allProducts.find((p) => p.id === id);
 
   const relatedProducts = allProducts
-    .filter(
-      (p) => p.category === product?.category && p.id !== product?.id
-    )
+    .filter((p) => p.category === product?.category && p.id !== product?.id)
     .slice(0, 4);
 
   const [activeImage] = useState(product?.image);
@@ -40,7 +37,10 @@ export default function ProductDetailsPage() {
     return (
       <div className="p-10 text-center">
         <p>Product not found</p>
-        <Link href="/products" className="text-blue-500 hover:underline mt-4 inline-block">
+        <Link
+          href="/products"
+          className="text-blue-500 hover:underline mt-4 inline-block"
+        >
           Back to Products
         </Link>
       </div>
@@ -50,78 +50,170 @@ export default function ProductDetailsPage() {
   return (
     <section className="bg-white">
       <div className="max-w-7xl mx-auto px-4 py-8">
-
         {/* Back Button */}
         <Link
           href="/products"
-          className="flex items-center gap-2 text-blue-600 hover:text-blue-800 mb-6"
+          className="flex items-center gap-2 text-primary hover:text-secondary mb-6"
         >
           <FontAwesomeIcon icon={faArrowLeft} />
           Back to Products
         </Link>
 
-        {/* Top Product */}
+        {/* ================= TOP PRODUCT ================= */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-
-          {/* Image */}
+          {/* LEFT: Image + Thumbnails */}
           <div>
-            <div className="border rounded-xl p-6 flex justify-center">
+            <div className="border  p-2 flex justify-center">
               <Image
                 src={activeImage || product.image}
                 alt={product.title}
-                width={450}
-                height={450}
+                width={420}
+                height={420}
                 className="object-contain"
               />
             </div>
+
+            {/* Thumbnails */}
+            <div className="flex gap-3 mt-4">
+              {[product.image, product.image, product.image, product.image].map(
+                (img, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setActiveImage(img)}
+                    className=" rounded   ring-primary"
+                  >
+                    <Image src={img} alt="thumb" width={60} height={60} />
+                  </button>
+                ),
+              )}
+            </div>
           </div>
 
-          {/* Info */}
+          {/* RIGHT: Product Info */}
           <div>
             <h1 className="text-2xl font-bold">{product.title}</h1>
-            <p className="text-gray-600 mt-1">{product.brand}</p>
-            <p className="text-gray-600 text-sm">{product.category}</p>
 
-            <div className="flex items-center gap-2 mt-3">
-              <div className="flex text-yellow-400">
+            {/* Rating */}
+            <div className="flex items-center gap-2 mt-2">
+              <div className="flex text-secondary">
                 {[...Array(5)].map((_, i) => (
                   <FontAwesomeIcon key={i} icon={faStar} />
                 ))}
               </div>
-              <span className="text-sm text-gray-500">({product.rating})</span>
-              <span className="text-xs text-green-600 ml-auto">
-                {product.stock} in stock
-              </span>
+              <span className="text-sm text-gray-500">{product.rating}</span>
             </div>
 
-            <div className="mt-4 flex items-center gap-3">
+            <p className="text-sm text-gray-500 mt-1">460gm</p>
+
+            {/* Price */}
+            <div className="mt-3 flex items-center gap-3">
               <span className="text-3xl font-bold">₹{product.price}</span>
               <span className="line-through text-gray-400">₹{product.mrp}</span>
-              <span className="text-red-500 font-semibold">
-                {Math.round(((product.mrp - product.price) / product.mrp) * 100)}% OFF
-              </span>
             </div>
 
-            {/* Quantity */}
-            <div className="mt-6 flex items-center gap-4">
-              <div className="flex border rounded">
-                <button onClick={() => setQty(Math.max(1, qty - 1))} className="px-3 py-2">
-                  <FontAwesomeIcon icon={faMinus} />
+            {/* Variant Buttons */}
+            <div className="mt-4 flex gap-3">
+              {["Single", "Small", "Large"].map((v) => (
+                <button
+                  key={v}
+                  className={`px-4 py-1 border rounded text-sm ${
+                    v === "Small"
+                      ? "bg-primary text-white"
+                      : "bg-gray-100 hover:bg-gray-200"
+                  }`}
+                >
+                  {v}
                 </button>
-                <span className="px-4 py-2">{qty}</span>
-                <button onClick={() => setQty(qty + 1)} className="px-3 py-2">
-                  <FontAwesomeIcon icon={faPlus} />
-                </button>
+              ))}
+            </div>
+
+            {/* Description bullets */}
+            <ul className="mt-5 text-sm text-gray-600 space-y-1 list-disc ml-4">
+              <li>Texture: Crispy cookie exterior with gooey molten center</li>
+              <li>Flavor: Rich, velvety, chocolate</li>
+              <li>Brand: Sunfeast</li>
+              <li>Occasion: Snacks, dessert, midnight cravings</li>
+            </ul>
+
+            {/* Subscription box */}
+            <div className="mt-6 rounded-xl p-4 space-y-3 bg-[#FAFAFA] shadow">
+              <div className="flex justify-between">
+                <label className="flex items-center gap-2">
+                  <input type="radio" defaultChecked />
+                  One-time Purchase
+                </label>
+                <span className="font-semibold">₹{product.price}</span>
+              </div>
+              <hr />
+              <div className="flex justify-between">
+                <label className="flex items-center gap-2">
+                  <input type="radio" />
+                  Subscribe and Save!
+                </label>
+                <span className="font-semibold text-green-600">
+                  ₹{(product.price * 0.93).toFixed(1)}
+                </span>
+              </div>
+            </div>
+
+            <p className="text-xs text-gray-500 mt-2">
+              Only {product.stock} items left in stock!
+            </p>
+
+            {/* Quantity + Buttons */}
+            <div className="mt-5 flex items-center gap-3">
+              {/* Quantity Box */}
+              <div className="relative border-2 border-black rounded-md w-[70px] h-[48px] flex items-center justify-center font-semibold">
+                <input
+                  type="number"
+                  value={qty}
+                  min={1}
+                  onChange={(e) => setQty(+e.target.value)}
+                  className="w-full h-full text-center outline-none appearance-none"
+                />
               </div>
 
-              <button className="bg-[#FF681A] text-white px-6 py-2 rounded flex items-center gap-2">
+              {/* Add to Cart Button */}
+              <button className="flex items-center justify-center gap-2 bg-secondary hover:bg-primary text-white px-8 h-[48px] rounded-md font-medium">
                 <FontAwesomeIcon icon={faShoppingCart} />
-                Add to Cart
+                Add To Cart
               </button>
 
-              <button className="border p-3 rounded">
+              {/* Wishlist */}
+              <button className="h-[48px] w-[48px] border rounded-md flex items-center justify-center hover:bg-gray-100">
                 <FontAwesomeIcon icon={faHeart} />
               </button>
+            </div>
+
+            {/* Pincode */}
+            <div className="mt-6">
+              <p className="font-semibold mb-2">Check Pincode</p>
+              <div className="flex gap-2">
+                <input
+                  placeholder="Enter pincode"
+                  className="border rounded px-3 py-2 flex-1"
+                />
+                <button className="bg-primary text-white px-4 rounded">
+                  Check
+                </button>
+              </div>
+            </div>
+
+            {/* Offers */}
+            <div className="mt-6 border rounded-xl p-4">
+              <p className="font-semibold mb-2">Buy more, save more!</p>
+
+              <div className="border p-3 rounded flex justify-between items-center">
+                <div>
+                  <p className="text-sm font-medium">
+                    Buy 5 items & Get extra 5% off
+                  </p>
+                  <p className="text-xs text-gray-500">Free Shipping</p>
+                </div>
+                <button className="border px-3 py-1 rounded text-sm">
+                  Grab Deal
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -157,9 +249,15 @@ export default function ProductDetailsPage() {
 
             {tab === "info" && (
               <>
-                <p><strong>Brand:</strong> {product.brand}</p>
-                <p><strong>Category:</strong> {product.category}</p>
-                <p><strong>Stock:</strong> {product.stock}</p>
+                <p>
+                  <strong>Brand:</strong> {product.brand}
+                </p>
+                <p>
+                  <strong>Category:</strong> {product.category}
+                </p>
+                <p>
+                  <strong>Stock:</strong> {product.stock}
+                </p>
               </>
             )}
           </div>
@@ -177,20 +275,86 @@ export default function ProductDetailsPage() {
                 <Link
                   key={item.id}
                   href={`/products/${item.id}`}
-                  className="border rounded-xl p-3 hover:shadow transition"
+                  className="bg-white rounded-xl border border-gray-300 shadow-sm hover:shadow-md transition p-2 md:p-3 flex flex-col cursor-pointer"
                 >
-                  <div className="relative h-40">
-                    <Image src={item.image} alt={item.title} fill className="object-contain" />
+                  {/* Image */}
+                  <div className="relative w-full h-[200px] overflow-hidden rounded-lg bg-white flex items-center justify-center">
+                    {/* Heart */}
+                    <div className="absolute top-2 right-2 z-10">
+                      <button
+                        onClick={(e) => e.preventDefault()}
+                        className="w-8 h-8 rounded-full bg-white border border-[#d5d5d5] text-primary hover:text-secondary transition flex items-center justify-center"
+                      >
+                        <FontAwesomeIcon icon={faHeart} />
+                      </button>
+                    </div>
+
+                    <Image
+                      src={item.image}
+                      alt={item.title}
+                      fill
+                      className="object-contain p-2"
+                    />
                   </div>
 
-                  <p className="text-sm mt-2">{item.title}</p>
-                  <p className="font-bold">₹{item.price}</p>
+                  {/* Title */}
+                  <p className="text-sm text-gray-700 line-clamp-2 mt-2">
+                    {item.title}
+                  </p>
+
+                  {/* Brand */}
+                  <p className="text-xs text-gray-500">{item.brand}</p>
+
+                  {/* Rating */}
+                  <div className="flex items-center gap-1 mt-1">
+                    <div className="flex text-yellow-400">
+                      {[...Array(5)].map((_, i) => (
+                        <FontAwesomeIcon key={i} icon={faStar} size="xs" />
+                      ))}
+                    </div>
+                    <span className="text-xs text-gray-500">
+                      ({item.rating})
+                    </span>
+                  </div>
+
+                  {/* Price */}
+                  <div className="mt-2 flex items-center gap-2">
+                    <span className="font-bold text-md">₹{item.price}</span>
+                    <span className="text-sm line-through text-gray-400">
+                      ₹{item.mrp}
+                    </span>
+                    <span className="text-xs text-red-500 font-medium">
+                      {Math.round(((item.mrp - item.price) / item.mrp) * 100)}%
+                      OFF
+                    </span>
+                  </div>
+
+                  {/* Stock */}
+                  <p className="text-xs text-green-600 mt-1">
+                    {item.stock} in stock
+                  </p>
+
+                  {/* Buttons */}
+                  <div className="mt-auto flex items-center gap-2 pt-3">
+                    <button
+                      onClick={(e) => e.preventDefault()}
+                      className="flex-1 bg-[#FF681A] hover:bg-primary text-white py-2 rounded-md text-sm font-medium"
+                    >
+                      Buy Now
+                    </button>
+
+                    <button
+                      onClick={(e) => e.preventDefault()}
+                      className="w-10 h-10 border rounded-md flex items-center justify-center text-[#000958] hover:bg-gray-100"
+                    >
+                      <FontAwesomeIcon icon={faShoppingCart} />
+                    </button>
+                  </div>
                 </Link>
               ))}
             </div>
           </div>
         )}
-
       </div>
     </section>
   );
