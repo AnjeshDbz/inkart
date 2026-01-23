@@ -33,7 +33,7 @@ export default function Header() {
       <header className="w-full bg-white">
         {/* ================= TOP BAR ================= */}
         <div className="bg-primary text-white text-xs md:text-sm">
-          <div className="mx-auto max-w-7xl px-4 flex justify-between py-1">
+          <div className="mx-auto max-w-10xl px-2 md:px-8 flex justify-between py-1">
             <span>Email: care@dotinkart.com</span>
             <span className="cursor-pointer">English ▾</span>
           </div>
@@ -41,7 +41,7 @@ export default function Header() {
 
         {/* ================= MAIN HEADER ================= */}
         <div className="border-b border-gray-300 shadow-sm bg-white">
-          <div className="mx-auto max-w-7xl px-4 py-3 flex items-center justify-between gap-3">
+          <div className="mx-auto max-w-10xl px-2 md:px-8 py-3 flex items-center justify-between gap-3">
             {/* LEFT: LOGO */}
             <div className="flex items-center">
               <Link href="/">
