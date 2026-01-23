@@ -9,7 +9,7 @@ module.exports = {
       maxWidth: {
         '8xl': '1440px',
         '9xl': '1536px',
-        '10xl': '1600px',
+        '10xl': '1450px',
         '11xl': '1700px',
         '12xl': '1800px',
       },
