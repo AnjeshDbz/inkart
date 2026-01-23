@@ -224,73 +224,67 @@ export default function ProductDetailsPage() {
         </div>
 
         {/* Tabs */}
-        <div className="w-full bg-[#efeeff] py-8 px-2 md:px-8">
-          <div className="max-w-10xl  mx-auto ">
-            {/* Tab Buttons */}
-            <div className="flex gap-3 bg-primary p-2 rounded-xl w-fit">
-              {[
-                { key: "desc", label: "Description" },
-                { key: "info", label: "Additional Info" },
-                { key: "review", label: "Review" },
-              ].map((t) => (
-                <button
-                  key={t.key}
-                  onClick={() => setTab(t.key as any)}
-                  className={`px-5 py-2 rounded-lg text-sm font-medium transition
-          ${
-            tab === t.key
-              ? "bg-white text-secondary shadow"
-              : "text-white hover:text-secondary"
-          }`}
-                >
-                  {t.label}
-                </button>
-              ))}
-            </div>
+<div className="w-full bg-[#efeeff] py-8 px-2 md:px-8">
+  <div className="max-w-10xl mx-auto">
+    
+    {/* Tab Buttons */}
+    <div className="overflow-x-auto scrollbar-hide">
+      <div className="flex gap-3 bg-white p-2 rounded-xl w-max md:w-fit scroll-smooth">
+        {[
+          { key: "desc", label: "Description" },
+          { key: "info", label: "Additional Info" },
+          { key: "review", label: "Review" },
+        ].map((t) => (
+          <button
+            key={t.key}
+            onClick={() => setTab(t.key as any)}
+            className={`whitespace-nowrap flex-shrink-0 px-5 py-2 rounded-lg text-sm font-medium transition
+              ${
+                tab === t.key
+                  ? "bg-primary text-white shadow"
+                  : "bg-secondary text-white hover:text-primary hover:bg-white border border-secondary hover:border-primary"
+              }`}
+          >
+            {t.label}
+          </button>
+        ))}
+      </div>
+    </div>
 
-            {/* Tab Content */}
-            <div className="mt-8 text-sm text-gray-700 leading-relaxed">
-              {/* Description */}
-              {tab === "desc" && (
-                <div className="space-y-4">
-                  <h2 className="text-2xl font-bold text-black">
-                    {product.title}
-                  </h2>
-
-                  <p>{product.description}</p>
-
-                  
-                </div>
-              )}
-
-              {/* Additional Info */}
-              {tab === "info" && (
-                <div className="space-y-2">
-                  <p>
-                    <strong>Brand:</strong> {product.brand}
-                  </p>
-                  <p>
-                    <strong>Category:</strong> {product.category}
-                  </p>
-                  <p>
-                    <strong>Stock:</strong> {product.stock}
-                  </p>
-                  <p>
-                    <strong>Rating:</strong> {product.rating}
-                  </p>
-                </div>
-              )}
-
-              {/* Review */}
-              {tab === "review" && (
-                <div className="text-gray-500">
-                  <p>No reviews yet.</p>
-                  <p className="mt-2">Be the first to review this product.</p>
-                </div>
-              )}
-            </div>
-          </div>
+    {/* Tab Content */}
+    <div className="mt-8 text-sm text-gray-700 leading-relaxed">
+      
+      {/* Description */}
+      {tab === "desc" && (
+        <div className="space-y-4">
+          <h2 className="text-2xl font-bold text-black">
+            {product.title}
+          </h2>
+          <p>{product.description}</p>
         </div>
+      )}
+
+      {/* Additional Info */}
+      {tab === "info" && (
+        <div className="space-y-2">
+          <p><strong>Brand:</strong> {product.brand}</p>
+          <p><strong>Category:</strong> {product.category}</p>
+          <p><strong>Stock:</strong> {product.stock}</p>
+          <p><strong>Rating:</strong> {product.rating}</p>
+        </div>
+      )}
+
+      {/* Review */}
+      {tab === "review" && (
+        <div className="text-gray-500">
+          <p>No reviews yet.</p>
+          <p className="mt-2">Be the first to review this product.</p>
+        </div>
+      )}
+    </div>
+  </div>
+</div>
+
 
         {/* Related */}
         {relatedProducts.length > 0 && (
