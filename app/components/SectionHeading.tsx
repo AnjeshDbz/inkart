@@ -8,7 +8,7 @@ export default function SectionHeading({ title }: SectionHeadingProps) {
   return (
     <div className="flex items-center justify-center gap-2 sm:gap-4 my-6 sm:my-10 px-3 text-center">
       {/* Left line */}
-      <div className="h-[2px] flex-1 max-w-[50px] sm:max-w-[140px] bg-secondary" />
+      <div className="h-[3px] flex-1 max-w-[50px] sm:max-w-[200px] bg-secondary" />
 
       {/* Left icon */}
       <Image
@@ -34,7 +34,7 @@ export default function SectionHeading({ title }: SectionHeadingProps) {
       />
 
       {/* Right line */}
-      <div className="h-[2px] flex-1 max-w-[50px] sm:max-w-[140px] bg-secondary" />
+      <div className="h-[3px] flex-1 max-w-[50px] sm:max-w-[200px] bg-secondary" />
     </div>
   );
 }
