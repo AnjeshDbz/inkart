@@ -142,7 +142,7 @@ export default function ProductPage() {
         <span className="text-sm text-gray-500">982 products</span>
       </div>
 
-      <div className="mx-auto max-w-7xl px-4 py-8 grid grid-cols-1 lg:grid-cols-4 gap-6">
+      <div className="mx-auto max-w-10xl px-4 py-8 grid grid-cols-1 lg:grid-cols-4 gap-6">
         {/* Desktop Sidebar */}
         <aside className="hidden lg:block">
           <FilterContent open={open} toggle={toggle} />

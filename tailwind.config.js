@@ -7,10 +7,10 @@ module.exports = {
   theme: {
     extend: {
       maxWidth: {
-        '8xl': '1440px',
-        '9xl': '1536px',
+        '8xl': '1300px',
+        '9xl': '1400px',
         '10xl': '1450px',
-        '11xl': '1700px',
+        '11xl': '1600px',
         '12xl': '1800px',
       },
     },
