@@ -1,5 +1,7 @@
 import { Product } from "../../types";
 
+export type { Product };
+
 /* -----------------------------------
    PRODUCTS (using your existing images)
 ------------------------------------ */
