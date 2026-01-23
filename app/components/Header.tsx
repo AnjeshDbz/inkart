@@ -26,7 +26,6 @@ const haptic = () => {
 export default function Header() {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
-  const [searchOpen, setSearchOpen] = useState(false);
 
   return (
     <>
@@ -62,42 +61,29 @@ export default function Header() {
                   aria-label="Search products"
                   placeholder="Search through a wide range of products…"
                   className="
-        w-full border rounded-md
-        pl-4 pr-10 py-2
-        bg-white text-black placeholder-gray-500
-        focus:outline-none focus:ring-2 focus:ring-brand.primary
-      "
+                    w-full border rounded-md
+                    pl-4 pr-10 py-2
+                    bg-white text-black placeholder-gray-500
+                    focus:outline-none focus:none 
+                  "
                 />
-
                 <button
                   aria-label="Search"
-                  className="
-        absolute right-2 top-1/2 -translate-y-1/2
-        text-[color:var(--primary)]
-        hover:text-[color:var(--secondary)]
-        transition-colors
-      "
+                  className="absolute right-2 top-1/2 -translate-y-1/2 text-[color:var(--primary)]"
                 >
                   <FontAwesomeIcon icon={faMagnifyingGlass} />
                 </button>
               </div>
             </div>
 
-            {/* RIGHT: ICONS + MOBILE CONTROLS */}
+            {/* RIGHT ICONS */}
             <div className="flex items-center gap-4 text-lg">
-              {/* MOBILE: Search + Hamburger (FIXED) */}
+              {/* MOBILE: Only Hamburger */}
               <div className="flex items-center gap-3 md:hidden">
-                <button
-                  onClick={() => setSearchOpen(true)}
-                  aria-label="Search"
-                  className="hover:text-brand.secondary focus-visible:ring-2 focus-visible:ring-brand.primary rounded"
-                >
-                  <FontAwesomeIcon icon={faMagnifyingGlass} />
-                </button>
                 <button
                   onClick={() => setMenuOpen(true)}
                   aria-label="Toggle menu"
-                  className="text-xl focus-visible:ring-2 focus-visible:ring-brand.primary rounded"
+                  className="text-xl"
                 >
                   <FontAwesomeIcon icon={faBars} />
                 </button>
@@ -105,231 +91,151 @@ export default function Header() {
 
               {/* DESKTOP ICONS */}
               <div className="hidden md:flex items-center gap-4">
-                <button
-                  aria-label="Wishlist"
-                  className="text-[color:var(--primary)] hover:text-[color:var(--secondary)] transition-colors"
-                >
+                <button>
                   <FontAwesomeIcon icon={faHeart} />
                 </button>
-
-                <button
-                  aria-label="Cart"
-                  className="text-[color:var(--primary)] hover:text-[color:var(--secondary)] transition-colors"
-                >
+                <button>
                   <FontAwesomeIcon icon={faShoppingCart} />
                 </button>
-
-                <button
-                  aria-label="Account"
-                  className="text-[color:var(--primary)] hover:text-[color:var(--secondary)] transition-colors"
-                >
+                <button>
                   <FontAwesomeIcon icon={faUser} />
                 </button>
               </div>
             </div>
           </div>
+
+          {/* ================= MOBILE SEARCH (NEW INLINE) ================= */}
+          <div className="md:hidden px-2 pb-3">
+            <div className="relative w-full">
+              <input
+                placeholder="Search through a wide range of products..."
+                className="
+                  w-full border rounded-lg
+                  pl-4 pr-10 py-2.5
+                  bg-white text-black placeholder-gray-500
+                  focus:outline-none focus:none
+                "
+              />
+              <button className="absolute right-3 top-1/2 -translate-y-1/2 text-[color:var(--primary)]">
+                <FontAwesomeIcon icon={faMagnifyingGlass} />
+              </button>
+            </div>
+          </div>
         </div>
 
-        {/* ================= NAVIGATION (DESKTOP + MOBILE COLLAPSE) ================= */}
+        {/* ================= NAVIGATION ================= */}
         <nav className="border-b border-gray-300 bg-white">
           <div className="mx-auto max-w-7xl px-4">
             <ul
               className={`font-medium flex flex-col lg:flex-row gap-4 lg:gap-8 py-3
-      lg:justify-center
-      ${menuOpen ? "flex" : "hidden lg:flex"}`}
+              lg:justify-center
+              ${menuOpen ? "flex" : "hidden lg:flex"}`}
             >
               <li>
                 <Link
                   href="/"
-                  className={`hover:text-brand.primary ${
-                    pathname === "/" ? "text-brand.primary font-semibold" : ""
-                  }`}
+                  className={pathname === "/" ? "font-semibold" : ""}
                 >
                   Home
                 </Link>
               </li>
-
               <li>
                 <Link
                   href="/products"
-                  className={`hover:text-brand.primary ${
-                    pathname === "/products"
-                      ? "text-brand.primary font-semibold"
-                      : ""
-                  }`}
+                  className={pathname === "/products" ? "font-semibold" : ""}
                 >
                   Shop
                 </Link>
               </li>
-
               <li>
-                <Link href="/products" className="hover:text-brand.primary">
-                  Categories ▾
-                </Link>
+                <Link href="/products">Categories ▾</Link>
               </li>
-
               <li>
-                <a href="#combos" className="hover:text-brand.primary">
-                  Combos
-                </a>
+                <a href="#combos">Combos</a>
               </li>
-
               <li>
-                <span className="cursor-pointer hover:text-brand.primary">
-                  More ▾
-                </span>
+                <span>More ▾</span>
               </li>
             </ul>
           </div>
         </nav>
       </header>
 
-      {/* ================= MOBILE SEARCH POPUP ================= */}
-      <div
-        className={`fixed inset-0 z-50 transition-opacity duration-300 ${
-          searchOpen
-            ? "opacity-100 pointer-events-auto"
-            : "opacity-0 pointer-events-none"
-        } bg-black/40 md:hidden`}
-        onClick={() => setSearchOpen(false)}
-      >
-        <div
-          className={`bg-white w-full shadow-lg transform transition-transform duration-300 ease-out ${
-            searchOpen ? "translate-y-0" : "-translate-y-full"
-          }`}
-          onClick={(e) => e.stopPropagation()}
-        >
-          <div className="mx-auto max-w-7xl px-4 py-4 flex items-center gap-3">
-            <input
-              autoFocus={searchOpen}
-              aria-label="Search products"
-              placeholder="Search products…"
-              className="flex-1 border rounded-md px-4 py-2 bg-white text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-brand.primary"
-            />
-            <button
-              onClick={() => setSearchOpen(false)}
-              aria-label="Close search"
-              className="text-xl"
-            >
-              <FontAwesomeIcon icon={faXmark} />
-            </button>
-          </div>
-        </div>
-      </div>
-
       {/* ================= MOBILE SIDE MENU ================= */}
-      <div
-        className={`fixed inset-0 z-50 transition lg:hidden ${
-          menuOpen ? "pointer-events-auto" : "pointer-events-none"
-        }`}
-      >
-        <div
-          className={`absolute inset-0 backdrop-blur-sm transition-opacity ${
-            menuOpen ? "opacity-100" : "opacity-0"
-          }`}
-          onClick={() => setMenuOpen(false)}
-        />
-        <aside
-          className={`absolute left-0 top-0 h-full w-[75%] max-w-xs bg-white shadow-xl transform transition-transform duration-300 ${
-            menuOpen ? "translate-x-0" : "-translate-x-full"
-          }`}
-        >
-          <div className="p-4 flex justify-between border-b">
-            <span className="font-semibold">Menu</span>
-            <button onClick={() => setMenuOpen(false)}>
-              <FontAwesomeIcon icon={faXmark} />
-            </button>
-          </div>
-          <nav className="p-4 space-y-4">
-            <Link
-              href="/"
-              onClick={() => setMenuOpen(false)}
-              className={`block ${
-                pathname === "/" ? "text-brand.primary font-semibold" : ""
-              }`}
-            >
-              Home
-            </Link>
-            <Link
-              href="/products"
-              onClick={() => setMenuOpen(false)}
-              className={`block ${
-                pathname === "/products"
-                  ? "text-brand.primary font-semibold"
-                  : ""
-              }`}
-            >
-              Shop
-            </Link>
-            <Link
-              href="/products"
-              onClick={() => setMenuOpen(false)}
-              className="block"
-            >
-              Categories
-            </Link>
-            <a
-              href="#combos"
-              onClick={() => setMenuOpen(false)}
-              className="block"
-            >
-              Combos
-            </a>
-            <span className="block cursor-pointer">More</span>
-          </nav>
-        </aside>
-      </div>
+      {menuOpen && (
+        <div className="fixed inset-0 z-50 lg:hidden">
+          {/* Overlay */}
+          <div
+            className="absolute inset-0 bg-black/40"
+            onClick={() => setMenuOpen(false)}
+          />
 
-      {/* ================= MOBILE BOTTOM NAV (NOW SHOWS!) ================= */}
-      <nav
-        className="md:hidden fixed bottom-0 inset-x-0 bg-white border-t z-40 flex justify-around py-2 shadow-lg"
-        style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
-      >
+          {/* Drawer */}
+          <aside className="absolute left-0 top-0 h-full w-[80%] max-w-sm bg-white shadow-xl animate-slideIn">
+            {/* Header */}
+            <div className="flex items-center justify-between px-5 py-4 border-b">
+              <span className="text-lg font-semibold">Menu</span>
+              <button onClick={() => setMenuOpen(false)} className="text-xl">
+                <FontAwesomeIcon icon={faXmark} />
+              </button>
+            </div>
+
+            {/* Links */}
+            <nav className="flex flex-col py-2">
+              {[
+                { label: "Home", href: "/" },
+                { label: "Shop", href: "/products" },
+                { label: "Categories", href: "/products" },
+                { label: "Combos", href: "#combos" },
+                { label: "More", href: "#" },
+              ].map((item) => (
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  onClick={() => setMenuOpen(false)}
+                  className="text-lg px-5 py-2 hover:bg-gray-50"
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </nav>
+          </aside>
+        </div>
+      )}
+
+      {/* ================= MOBILE BOTTOM NAV ================= */}
+      <nav className="md:hidden fixed bottom-0 inset-x-0 bg-white border-t z-40 flex justify-around py-2 shadow-lg">
         {[
-          { href: "/", icon: faHome, label: "Home", active: pathname === "/" },
-          {
-            href: "/categories",
-            icon: faList,
-            label: "Categories",
-            active: pathname === "/categories",
-          },
-          {
-            href: "/messages",
-            icon: faMessage,
-            label: "Messages",
-            active: pathname === "/messages",
-          },
+          { href: "/", icon: faHome, label: "Home" },
+          { href: "/categories", icon: faList, label: "Categories" },
+          { href: "/messages", icon: faMessage, label: "Messages" },
           {
             href: "/cart",
             icon: faShoppingCart,
             label: "Cart",
-            badge: 3,
-            active: pathname === "/cart",
+            badge: 3, // 👈 cart quantity (you can make this dynamic later)
           },
-          {
-            href: "/account",
-            icon: faUser,
-            label: "Account",
-            active: pathname === "/account",
-          },
+          { href: "/account", icon: faUser, label: "Account" },
         ].map((item) => (
           <Link
             key={item.href}
             href={item.href}
             onClick={haptic}
-            className={`relative flex flex-col items-center text-xs transition-colors ${
-              item.active
-                ? "text-brand.primary"
-                : "text-gray-500 hover:text-brand.primary"
-            }`}
+            className="relative flex flex-col items-center text-xs text-gray-500"
           >
-            <FontAwesomeIcon icon={item.icon} className="text-lg mb-1" />
-            {item.badge && (
-              <span className="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] rounded-full w-5 h-5 flex items-center justify-center">
-                {item.badge}
-              </span>
-            )}
-            <span className="text-[11px]">{item.label}</span>
+            {/* ICON */}
+            <div className="relative">
+              <FontAwesomeIcon icon={item.icon} className="text-lg mb-1" />
+
+              {/* BADGE */}
+              {item.badge && (
+                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-[10px] w-5 h-5 rounded-full flex items-center justify-center">
+                  {item.badge}
+                </span>
+              )}
+            </div>
+
+            <span>{item.label}</span>
           </Link>
         ))}
       </nav>
