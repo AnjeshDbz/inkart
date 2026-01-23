@@ -6,7 +6,7 @@ type SectionHeadingProps = {
 
 export default function SectionHeading({ title }: SectionHeadingProps) {
   return (
-    <div className="flex items-center justify-center gap-2 sm:gap-4 my-6 sm:my-10 px-3 text-center">
+    <div className="flex items-center justify-center gap-2 sm:gap-4 mb-6 sm:mb-10 px-3 text-center">
       {/* Left line */}
       <div className="h-[3px] flex-1 max-w-[50px] sm:max-w-[200px] bg-secondary" />
 
