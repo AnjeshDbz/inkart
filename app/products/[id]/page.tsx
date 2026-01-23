@@ -53,7 +53,7 @@ export default function ProductDetailsPage() {
   return (
     <section className="bg-white">
       <div className="py-8">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-10xl mx-auto px-2 md:px-8">
           {/* Back Button */}
           <Link
             href="/products"
@@ -65,7 +65,7 @@ export default function ProductDetailsPage() {
         </div>
 
         {/* ================= TOP PRODUCT ================= */}
-        <div className="max-w-7xl mx-auto  grid grid-cols-1 lg:grid-cols-2 gap-10 py-8 px-2">
+        <div className="max-w-10xl mx-auto  grid grid-cols-1 lg:grid-cols-2 gap-10 py-8 px-2 md:px-8">
           {/* LEFT: Image + Thumbnails */}
           <div>
             <div className="border  p-2 flex justify-center">
@@ -224,8 +224,8 @@ export default function ProductDetailsPage() {
         </div>
 
         {/* Tabs */}
-        <div className="w-full bg-[#efeeff] py-8 px-2">
-          <div className="max-w-7xl mx-auto ">
+        <div className="w-full bg-[#efeeff] py-8 px-2 md:px-8">
+          <div className="max-w-10xl  mx-auto ">
             {/* Tab Buttons */}
             <div className="flex gap-3 bg-primary p-2 rounded-xl w-fit">
               {[
@@ -294,7 +294,7 @@ export default function ProductDetailsPage() {
 
         {/* Related */}
         {relatedProducts.length > 0 && (
-          <div className="mt-16 px-2 max-w-7xl mx-auto">
+          <div className="mt-16 px-2 md:px-8 max-w-10xl mx-auto">
             <h2 className="text-2xl font-semibold mb-6 text-center">
               Related Products
             </h2>
