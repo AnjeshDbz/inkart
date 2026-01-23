@@ -258,29 +258,7 @@ export default function ProductDetailsPage() {
 
                   <p>{product.description}</p>
 
-                  <div>
-                    <h3 className="font-semibold mt-4">Ingredients:</h3>
-                    <p>{product.ingredients}</p>
-                  </div>
-
-                  <div>
-                    <h3 className="font-semibold mt-4">Directions:</h3>
-                    <p>{product.directions}</p>
-                  </div>
-
-                  <div>
-                    <h3 className="font-semibold mt-4">Legal Disclaimer:</h3>
-                    <p className="text-gray-500">{product.disclaimer}</p>
-                  </div>
-
-                  <div>
-                    <h3 className="font-semibold mt-4">About this item:</h3>
-                    <ul className="list-disc ml-5 space-y-1">
-                      {product.highlights.map((h, i) => (
-                        <li key={i}>{h}</li>
-                      ))}
-                    </ul>
-                  </div>
+                  
                 </div>
               )}
 
