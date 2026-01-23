@@ -79,7 +79,7 @@ export default function HeroBanner() {
                 />
               </div>
 
-              <div className="relative flex-1 rounded-2xl shadow-card bg-[#28AE14] overflow-hidden group flex items-center justify-center">
+              <div className="relative flex-1 rounded-2xl shadow-card bg-[#28ae14] overflow-hidden group flex items-center justify-center">
                 <Image
                   src="/images/hero/super-deal.png"
                   alt="Super Deal Buy 1 Get 1"
