@@ -100,7 +100,7 @@ export default function HeroBanner() {
               />
               <div className="absolute inset-0 bg-black/45 group-hover:bg-black/30 transition-colors flex items-end p-5">
                 <h3 className="text-white font-semibold text-base leading-tight tracking-wide">
-                  Home <br /> FRAGRANCES
+                  Home <br /> FRAGRANCES 
                 </h3>
               </div>
             </div>
