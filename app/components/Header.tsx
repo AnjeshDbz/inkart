@@ -204,7 +204,7 @@ export default function Header() {
       )}
 
       {/* ================= MOBILE BOTTOM NAV ================= */}
-      <nav className="md:hidden fixed bottom-0 inset-x-0 bg-white border-t z-40 flex justify-around py-2 shadow-lg">
+      <nav className="md:hidden fixed bottom-0 inset-x-0 bg-white border-t z-40 flex justify-around py-4 shadow-lg">
         {[
           { href: "/", icon: faHome, label: "Home" },
           { href: "/categories", icon: faList, label: "Categories" },
