@@ -2,6 +2,7 @@
 
 import { useRef, useState } from "react";
 import Image from "next/image";
+import SectionHeading from "./SectionHeading";
 
 const videos = [
   "https://www.youtube.com/embed/ho0EhuO3RNs",
@@ -30,30 +31,7 @@ export default function FansTestimonials() {
     <>
       <section className="mx-auto w-full md:max-w-10xl px-4 py-14">
         {/* Heading */}
-        <div className="flex items-center justify-center gap-4 mb-10">
-          <Image
-            src="/images/divider-img.png"
-            alt="divider"
-            width={160}
-            height={30}
-            className="w-auto h-auto max-w-[60px] sm:max-w-[120px] md:max-w-[160px]"
-            priority
-            
-          />
-
-          <h2 className="text-xl md:text-4xl font-semibold text-brand.primary text-center">
-            Listen from Dotinkart&apos;s fans!
-          </h2>
-
-          <Image
-            src="/images/divider-img.png"
-            alt="divider"
-            width={160}
-            height={30}
-            className="w-auto h-auto max-w-[60px] sm:max-w-[120px] md:max-w-[160px]"
-            priority
-          />
-        </div>
+        <SectionHeading title="Listen from Dotinkart's fans!" />
 
         {/* Slider */}
         <div className="relative">

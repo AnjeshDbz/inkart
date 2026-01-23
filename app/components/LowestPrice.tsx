@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart, faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+import SectionHeading from "./SectionHeading";
 
 const products = [
   {
@@ -34,47 +35,23 @@ const products = [
 export default function LowestPrice() {
   return (
     <section className=" bg-[#EFEEFF]">
-
       <div className="mx-auto w-full md:max-w-10xl px-4 py-10">
- {/* HEADING */}
-      <div className="flex items-center justify-center gap-4 mb-10 relative z-20">
-        <Image
-          src="/images/divider-img.png"
-          alt="divider"
-          width={160}
-          height={30}
-          className="w-auto h-auto max-w-[60px] sm:max-w-[120px] md:max-w-[160px]"
-          priority
-        />
+        {/* HEADING */}
+        <SectionHeading title="Lowest Price Guaranteed" />
 
-        <h2 className="text-xl md:text-4xl font-semibold text-brand.primary text-center">
-          Lowest Price Guaranteed
-        </h2>
-
-        <Image
-          src="/images/divider-img.png"
-          alt="divider"
-          width={160}
-          height={30}
-          className="w-auto h-auto max-w-[60px] sm:max-w-[120px] md:max-w-[160px]"
-          priority
-        />
-      </div>
-
-      {/* Products */}
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
-        {products.map((item) => (
-          <div
-            key={item.id}
-            className="bg-white rounded-xl border border-gray-300 shadow-sm hover:shadow-md transition p-3 flex flex-col"
-          >
-           
-            {/* Image */}
-            <div className="relative w-full h-35 sm:h-78 md:h-72 overflow-hidden rounded-lg">
-              {/* Heart */}
-              <div className="absolute top-2 right-2 z-10">
-                <button
-                  className="
+        {/* Products */}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+          {products.map((item) => (
+            <div
+              key={item.id}
+              className="bg-white rounded-xl border border-gray-300 shadow-sm hover:shadow-md transition p-3 flex flex-col"
+            >
+              {/* Image */}
+              <div className="relative w-full h-35 sm:h-78 md:h-72 overflow-hidden rounded-lg">
+                {/* Heart */}
+                <div className="absolute top-2 right-2 z-10">
+                  <button
+                    className="
     w-[30px] 
     h-[30px] 
     rounded-full 
@@ -87,43 +64,42 @@ export default function LowestPrice() {
     duration-200
     flex items-center justify-center
   "
-                >
-                  <FontAwesomeIcon icon={faHeart} />
-                </button>
+                  >
+                    <FontAwesomeIcon icon={faHeart} />
+                  </button>
+                </div>
+
+                <Image
+                  src={item.image}
+                  alt={item.title}
+                  width={100}
+                  height={100}
+                  className="w-full h-35 md:h-72"
+                />
               </div>
 
-              <Image
-                src={item.image}
-                alt={item.title}
-                width={100}
-                height={100}
-                className="w-full h-35 md:h-72"
-              />
+              {/* Title */}
+              <p className="text-sm text-gray-700 line-clamp-2 mt-2">
+                {item.title}
+              </p>
+
+              {/* Price */}
+              <p className="font-bold text-lg mt-1">₹{item.price}</p>
+
+              {/* Buttons */}
+              <div className="mt-auto flex items-center gap-2 pt-3">
+                <button className="flex-1 bg-[#FF681A] hover:bg-[var(--primary)] text-white py-2 rounded-md text-sm font-medium hover:opacity-90">
+                  Buy Now
+                </button>
+
+                <button className="w-10 h-10 border rounded-md flex items-center justify-center text-[#000958] hover:bg-gray-100">
+                  <FontAwesomeIcon icon={faShoppingCart} />
+                </button>
+              </div>
             </div>
-
-            {/* Title */}
-            <p className="text-sm text-gray-700 line-clamp-2 mt-2">
-              {item.title}
-            </p>
-
-            {/* Price */}
-            <p className="font-bold text-lg mt-1">₹{item.price}</p>
-
-            {/* Buttons */}
-            <div className="mt-auto flex items-center gap-2 pt-3">
-              <button className="flex-1 bg-[#FF681A] hover:bg-[var(--primary)] text-white py-2 rounded-md text-sm font-medium hover:opacity-90">
-                Buy Now
-              </button>
-
-              <button className="w-10 h-10 border rounded-md flex items-center justify-center text-[#000958] hover:bg-gray-100">
-                <FontAwesomeIcon icon={faShoppingCart} />
-              </button>
-            </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-      </div>
-     
     </section>
   );
 }

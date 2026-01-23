@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart, faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+import SectionHeading from "./SectionHeading";
 
 const products = [
   {
@@ -30,27 +31,8 @@ export default function Combos() {
     <section className="bg-white">
       <div className="mx-auto w-full md:max-w-10xl px-4 py-12">
         {/* ================= HEADING ================= */}
-        <div className="flex items-center justify-center gap-4 mb-10">
-          <Image
-            src="/images/divider-img.png"
-            alt="divider"
-            width={160}
-            height={30}
-            className="max-w-[60px] sm:max-w-[120px]"
-          />
-
-          <h2 className="text-xl md:text-4xl font-semibold text-brand.primary text-center">
-            Combos
-          </h2>
-
-          <Image
-            src="/images/divider-img.png"
-            alt="divider"
-            width={160}
-            height={30}
-            className="max-w-[60px] sm:max-w-[120px]"
-          />
-        </div>
+        <SectionHeading title="Combos" />
+       
 
         {/* ================= GRID ================= */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
