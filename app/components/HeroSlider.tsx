@@ -41,7 +41,7 @@ export default function HeroSlider() {
               </div>
             </SwiperSlide>
           ))}
-        </Swiper>
+        </Swiper> 
 
       </div>
     </section>
