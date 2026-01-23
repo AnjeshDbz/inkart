@@ -294,7 +294,7 @@ export default function ProductDetailsPage() {
 
         {/* Related */}
         {relatedProducts.length > 0 && (
-          <div className="mt-16 px-2">
+          <div className="mt-16 px-2 max-w-7xl mx-auto">
             <h2 className="text-2xl font-semibold mb-6 text-center">
               Related Products
             </h2>
