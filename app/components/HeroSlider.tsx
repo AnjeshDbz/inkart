@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
 
@@ -15,38 +14,36 @@ const slides = [
 ];
 
 export default function HeroSlider() {
-  const paginationRef = useRef<HTMLDivElement>(null);
-
   return (
-    <section className="w-full max-w-8xl mx-auto px-4 my-8">
-      {/* SLIDER */}
-      <Swiper
-        modules={[Autoplay, Pagination]}
-        autoplay={{ delay: 3500, disableOnInteraction: false }}
-        loop
-        pagination={{
-          el: ".custom-pagination",
-          clickable: true,
-        }}
-        className="w-full"
-      >
-        {slides.map((slide) => (
-          <SwiperSlide key={slide.id}>
-            <div className="relative w-full h-[220px] sm:h-[320px] md:h-[500px] lg:h-[600px]  rounded-xl overflow-hidden">
-              <Image
-                src={slide.image}
-                alt="slider"
-                fill
-                priority
-                className="object-contain"
-              />
-            </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
+    <section className="mx-auto w-full md:max-w-[1500px] px-4 my-10">
+      <div className="relative rounded-2xl overflow-hidden">
 
-      {/* PAGINATION OUTSIDE */}
-      <div className="custom-pagination flex justify-center mt-4" />
+        <Swiper
+          modules={[Autoplay, Pagination]}
+          autoplay={{ delay: 4000, disableOnInteraction: false }}
+          loop
+          pagination={{
+            clickable: true,
+          }}
+          className="hero-swiper"
+        >
+          {slides.map((slide) => (
+            <SwiperSlide key={slide.id}>
+              {/* Fixed responsive height */}
+              <div className="relative w-full h-[220px] sm:h-[320px] md:h-[420px] lg:h-[520px]">
+                <Image
+                  src={slide.image}
+                  alt="slider"
+                  fill
+                  priority
+                  className="object-cover"
+                />
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+
+      </div>
     </section>
   );
 }

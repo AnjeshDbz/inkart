@@ -1,130 +1,71 @@
 "use client";
 
 import Image from "next/image";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart, faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import SectionHeading from "./SectionHeading";
+import ProductCard from "./ProductCard";
+import { products } from "../data/homepage";
 
-const products = [
-  {
-    id: 1,
-    title:
-      "Saksham, Pink Blanket, Made By Natural Sheep Cotton, Traditional Item, Pack Of 1 No, 7ft",
-    price: 574,
-    oldPrice: 816,
-    image: "/images/products/toy.webp",
-  },
-  {
-    id: 2,
-    title:
-      "Saksham, Pink Blanket, Made By Natural Sheep Cotton, Traditional Item, Pack Of 1 No, 7ft",
-    price: 574,
-    oldPrice: 816,
-    image: "/images/products/bag.webp",
-  },
-  {
-    id: 3,
-    title:
-      "Saksham, Pink Blanket, Made By Natural Sheep Cotton, Traditional Item, Pack Of 1 No, 7ft",
-    price: 574,
-    oldPrice: 816,
-    image: "/images/products/glass.webp",
-  },
-];
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
+
+import "swiper/css";
 
 export default function HomeTextiles() {
+  const textiles = products.slice(0, 6); // take more for better sliding
+
   return (
     <section className="bg-[#EFEEFF]">
-         <div className="mx-auto w-full md:max-w-10xl px-4 py-12">
-           {/* ================= HEADING ================= */}
-           <SectionHeading title="Home Textiles" />
-          
-   
-           {/* ================= GRID ================= */}
-           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
-             {/* LEFT BANNER */}
-             <div className="lg:col-span-1 h-full">
-               <div className="relative h-full  min-h-[420px] rounded-2xl overflow-hidden shadow">
-                 <Image
-                   src="/images/textiles-bg.jpg" // <-- your veg image
-                   alt="Veg Banner"
-                   fill
-                   className="object-cover"
-                 />
-   
-                 <div className="absolute bottom-6 left-1/2 -translate-x-1/2">
-                   <button
-                     className="bg-primary hover:bg-secondary text-white px-8 py-3 rounded-lg font-medium transition-colors 
-       duration-200"
-                   >
-                     Shop Now
-                   </button>
-                 </div>
-               </div>
-             </div>
-   
-             {/* PRODUCT CARDS */}
-             <div className="lg:col-span-3 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">
-               {products.map((item) => (
-                 <div
-                   key={item.id}
-                   className="bg-white rounded-xl border border-gray-300 shadow-sm hover:shadow-md transition p-3 flex flex-col"
-                 >
-                   {/* Image */}
-                   <div className="relative w-full h-35 sm:h-78 md:h-72 overflow-hidden rounded-lg">
-                     {/* Heart */}
-                     <div className="absolute top-2 right-2 z-10">
-                       <button
-                         className="
-                    w-[30px] 
-                    h-[30px] 
-                    rounded-full 
-                    bg-white 
-                    border 
-                    border-[#d5d5d5]
-                    text-primary 
-                    hover:text-secondary 
-                    transition-colors 
-                    duration-200
-                    flex items-center justify-center
-                  "
-                       >
-                         <FontAwesomeIcon icon={faHeart} />
-                       </button>
-                     </div>
-   
-                     <Image
-                       src={item.image}
-                       alt={item.title}
-                       width={100}
-                       height={100}
-                       className="w-full h-35 md:h-72"
-                     />
-                   </div>
-   
-                   {/* Title */}
-                   <p className="text-sm text-gray-700 line-clamp-2 mt-2">
-                     {item.title}
-                   </p>
-   
-                   {/* Price */}
-                   <p className="font-bold text-lg mt-1">₹{item.price}</p>
-   
-                   {/* Buttons */}
-                   <div className="mt-auto flex items-center gap-2 pt-3">
-                     <button className="flex-1 bg-[#FF681A] hover:bg-[var(--primary)] text-white py-2 rounded-md text-sm font-medium hover:opacity-90">
-                       Buy Now
-                     </button>
-   
-                     <button className="w-10 h-10 border rounded-md flex items-center justify-center text-[#000958] hover:bg-gray-100">
-                       <FontAwesomeIcon icon={faShoppingCart} />
-                     </button>
-                   </div>
-                 </div>
-               ))}
-             </div>
-           </div>
-         </div>
-       </section>
+      <div className="mx-auto w-full max-w-[1500px] px-4 py-12">
+        {/* ================= HEADING ================= */}
+        <SectionHeading title="Home Textiles" />
+
+        {/* ================= LAYOUT ================= */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 items-stretch">
+          {/* LEFT BANNER */}
+          <div className="md:col-span-1">
+            <div className="relative h-[420px] rounded-2xl overflow-hidden shadow-lg group">
+              <Image
+                src="/images/textiles-bg.jpg"
+                alt="Textiles Banner"
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+
+              <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition" />
+
+              <div className="absolute bottom-6 left-1/2 -translate-x-1/2">
+                <button className="bg-primary hover:bg-secondary text-white px-6 py-3 rounded-lg font-semibold shadow active:scale-95">
+                  Shop Now
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* ================= SLIDER ================= */}
+          <div className="md:col-span-3">
+            <Swiper
+              modules={[Autoplay]}
+              autoplay={{ delay: 3000, pauseOnMouseEnter: true }}
+              loop
+              speed={600}
+              spaceBetween={16}
+              breakpoints={{
+                0: { slidesPerView: 1.2 },
+                480: { slidesPerView: 1.5 },
+                640: { slidesPerView: 2 },
+                1024: { slidesPerView: 3 },
+              }}
+              className="pb-2"
+            >
+              {textiles.map((item) => (
+                <SwiperSlide key={item.id} className="!h-auto">
+                  <ProductCard product={item} />
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }

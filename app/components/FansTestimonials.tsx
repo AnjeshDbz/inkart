@@ -29,7 +29,7 @@ export default function FansTestimonials() {
 
   return (
     <>
-      <section className="mx-auto w-full md:max-w-7xl px-4 py-14">
+      <section className="mx-auto w-full md:max-w-[1500px] px-4 py-14">
         {/* Heading */}
         <SectionHeading title="Listen from Dotinkart's fans!" />
 

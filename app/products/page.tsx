@@ -13,6 +13,8 @@ import {
   faStar,
 } from "@fortawesome/free-solid-svg-icons";
 import { products } from "../data/products";
+import { Product } from "../../types";
+import ProductCard from "../components/ProductCard";
 
 interface FilterState {
   price: boolean;
@@ -85,7 +87,12 @@ const FilterContent = ({ open, toggle }: FilterContentProps) => (
       </div>
     </FilterBox>
 
-    <FilterBox title="Availability" id="availability" open={open} toggle={toggle}>
+    <FilterBox
+      title="Availability"
+      id="availability"
+      open={open}
+      toggle={toggle}
+    >
       {["In Stock", "Out of Stock"].map((a) => (
         <label key={a} className="flex gap-2 text-sm">
           <input type="checkbox" />
@@ -149,101 +156,10 @@ export default function ProductPage() {
         </aside>
 
         {/* Products */}
-        <div className="lg:col-span-3 grid grid-cols-2 md:grid-cols-3 gap-2">
-          {products.map((item) => {
-            const discount = Math.round(((item.mrp - item.price) / item.mrp) * 100);
-            return (
-              <Link
-                key={item.id}
-                href={`/products/${item.id}`}
-                className="bg-white rounded-xl border border-gray-300 shadow-sm hover:shadow-md transition p-2 md:p-3 flex flex-col cursor-pointer"
-              >
-                {/* Image */}
-                <div className="relative w-full h-35 sm:h-78 md:h-72 overflow-hidden rounded-lg bg-white flex items-center justify-center">
-                  {/* Heart */}
-                  <div className="absolute top-2 right-2 z-10">
-                    <button
-                      onClick={(e) => e.preventDefault()}
-                      className="
-            w-7.5 
-            h-7.5 
-            rounded-full 
-            bg-white 
-            border 
-            border-[#d5d5d5]
-            text-primary 
-            hover:text-secondary 
-            transition-colors 
-            duration-200
-            flex items-center justify-center
-          "
-                    >
-                      <FontAwesomeIcon icon={faHeart} />
-                    </button>
-                  </div>
-
-                  {/* ✅ Fixed image fitting */}
-                  <Image
-                    src={item.image}
-                    alt={item.title}
-                    fill
-                    className="object-contain"
-                  />
-                </div>
-
-                {/* Title */}
-                <p className="text-sm text-gray-700 line-clamp-2 mt-2">
-                  {item.title}
-                </p>
-
-                {/* Brand */}
-                <p className="text-xs text-gray-500">{item.brand}</p>
-
-                {/* Rating */}
-                <div className="flex items-center gap-1 mt-1">
-                  <div className="flex text-yellow-400">
-                    {[...Array(5)].map((_, i) => (
-                      <FontAwesomeIcon key={i} icon={faStar} size="xs" />
-                    ))}
-                  </div>
-                  <span className="text-xs text-gray-500">({item.rating})</span>
-                </div>
-
-                {/* Price */}
-                <div className="mt-2 flex items-center gap-2">
-                  <span className="font-bold text-md">₹{item.price}</span>
-                  <span className="text-sm line-through text-gray-400">
-                    ₹{item.mrp}
-                  </span>
-                  <span className="text-xs text-red-500 font-medium">
-                    {discount}% OFF
-                  </span>
-                </div>
-
-                {/* Stock Status */}
-                <p className="text-xs text-green-600 mt-1">
-                  {item.stock} in stock
-                </p>
-
-                {/* Buttons */}
-                <div className="mt-auto flex items-center gap-2 pt-3">
-                  <button
-                    onClick={(e) => e.preventDefault()}
-                    className="flex-1 bg-[#FF681A] hover:bg-primary text-white py-2 rounded-md text-sm font-medium hover:opacity-90"
-                  >
-                    Buy Now
-                  </button>
-
-                  <button
-                    onClick={(e) => e.preventDefault()}
-                    className="w-10 h-10 border rounded-md flex items-center justify-center text-[#000958] hover:bg-gray-100"
-                  >
-                    <FontAwesomeIcon icon={faShoppingCart} />
-                  </button>
-                </div>
-              </Link>
-            );
-          })}
+        <div className="lg:col-span-3 grid grid-cols-2 lg:grid-cols-3 gap-6">
+          {products.map((item) => (
+            <ProductCard key={item.id} product={item} />
+          ))}
         </div>
       </div>
 

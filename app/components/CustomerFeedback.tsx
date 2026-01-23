@@ -43,11 +43,12 @@ const feedbacks = [
 export default function CustomerFeedback() {
   return (
     <section className="bg-white py-14">
-      <div className="mx-auto max-w-7xl px-4 grid grid-cols-1 lg:grid-cols-4 gap-10 items-center">
-        
+      <div className="mx-auto max-w-10xl px-4 grid grid-cols-1 lg:grid-cols-4 gap-10 items-center">
         {/* LEFT CONTENT */}
         <div>
-          <div className="text-[120px] leading-none text-gray-200 font-bold">“</div>
+          <div className="text-[120px] leading-none text-gray-200 font-bold">
+            “
+          </div>
           <h2 className="text-xl md:text-4xl font-bold text-primary -mt-6">
             Our Customer’s <br /> Feedback
           </h2>
@@ -82,11 +83,8 @@ export default function CustomerFeedback() {
             {feedbacks.map((item) => (
               <SwiperSlide key={item.id}>
                 <div className="bg-[#F7F7F7]  rounded-2xl p-6 shadow hover:shadow-md transition h-full flex flex-col">
-                  
                   {/* TEXT */}
-                  <p className="text-gray-600 text-sm mb-4">
-                    {item.text}
-                  </p>
+                  <p className="text-gray-600 text-sm mb-4">{item.text}</p>
 
                   {/* STARS */}
                   <div className="flex gap-1 text-red-500 mb-4">
@@ -111,9 +109,7 @@ export default function CustomerFeedback() {
                       <p className="font-semibold text-primary text-sm">
                         {item.name}
                       </p>
-                      <p className="text-xs text-gray-500">
-                        {item.role}
-                      </p>
+                      <p className="text-xs text-gray-500">{item.role}</p>
                     </div>
                   </div>
                 </div>

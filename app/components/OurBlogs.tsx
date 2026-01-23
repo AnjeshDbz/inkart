@@ -26,8 +26,7 @@ const blogs = [
 export default function OurBlogs() {
   return (
     <section className="bg-[#efeeff] py-12">
-      <div className="mx-auto max-w-7xl px-4">
-
+      <div className="mx-auto max-w-10xl px-4">
         {/* Heading */}
         <h2 className="text-center text-xl md:text-4xl font-semibold text-primary mb-10">
           Our Blogs
@@ -35,7 +34,6 @@ export default function OurBlogs() {
 
         {/* Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-
           {/* LEFT FEATURED BLOG */}
           <div className="lg:col-span-2">
             <div className="relative h-[420px] rounded-2xl overflow-hidden group">
@@ -60,7 +58,7 @@ export default function OurBlogs() {
                 </p>
 
                 <button className="bg-white text-black px-6 py-2 rounded-full text-sm font-medium hover:bg-secondary hover:text-white transition">
-                  Read More 
+                  Read More
                 </button>
               </div>
             </div>
@@ -92,7 +90,6 @@ export default function OurBlogs() {
               </div>
             ))}
           </div>
-
         </div>
       </div>
     </section>

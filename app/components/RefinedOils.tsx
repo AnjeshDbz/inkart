@@ -3,19 +3,19 @@
 import Image from "next/image";
 import SectionHeading from "./SectionHeading";
 import ProductCard from "./ProductCard";
-import { comboProducts } from "../data/homepage";
+import { refinedOils } from "../data/homepage";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 
 import "swiper/css";
 
-export default function Combos() {
+export default function RefinedOils() {
   return (
-    <section className="bg-white">
+    <section className="bg-[#EFEEFF]">
       <div className="mx-auto w-full max-w-[1500px] px-4 py-12">
         {/* ================= HEADING ================= */}
-        <SectionHeading title="Combos" />
+        <SectionHeading title="Refined Oils" />
 
         {/* ================= LAYOUT ================= */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 items-stretch">
@@ -23,8 +23,8 @@ export default function Combos() {
           <div className="md:col-span-1">
             <div className="relative h-[420px] rounded-2xl overflow-hidden shadow-lg group">
               <Image
-                src="/images/veg-bg.jpg"
-                alt="Veg Banner"
+                src="/images/oils-bg.jpg"
+                alt="Oils Banner"
                 fill
                 className="object-cover transition-transform duration-700 group-hover:scale-110"
               />
@@ -55,7 +55,7 @@ export default function Combos() {
               }}
               className="pb-2"
             >
-              {comboProducts.map((item) => (
+              {refinedOils.map((item) => (
                 <SwiperSlide key={item.id} className="!h-auto">
                   <ProductCard product={item} />
                 </SwiperSlide>

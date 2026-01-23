@@ -1,39 +1,7 @@
-export type Location = {
-  id: string;
-  name: string;
-  image: string;
-};
+import { Location, BlogPost, Testimonial, StatItem } from "../../types";
+export { products } from "./products";
+import { products } from "./products";
 
-export type Product = {
-  id: string;
-  title: string;
-  image: string;
-  price: number;
-  mrp: number;
-  rating: number;
-  variant?: string;
-};
-
-export type BlogPost = {
-  slug: string;
-  title: string;
-  excerpt: string;
-  image: string;
-};
-
-export type Testimonial = {
-  id: string;
-  name: string;
-  avatar: string;
-  rating: number;
-  review: string;
-};
-
-export type StatItem = {
-  id: string;
-  label: string;
-  value: string;
-};
 
 export const locations: Location[] = [
   { id: "1", name: "Kolhapur", image: "/images/cities/kolhapur.jpg" },
@@ -42,23 +10,13 @@ export const locations: Location[] = [
   { id: "4", name: "Ahilya Nagar", image: "/images/cities/ahilya.jpg" },
 ];
 
-export const lowestPriceProducts: Product[] = [
-  {
-    id: "p1",
-    title: "Organic Turmeric Powder",
-    image: "/images/products/turmeric.jpg",
-    price: 199,
-    mrp: 249,
-    rating: 4.5,
-    variant: "500g",
-  },
-];
-
-export const comboProducts = lowestPriceProducts;
-export const homemadeCookies = lowestPriceProducts;
-export const refinedOils = lowestPriceProducts;
+export const lowestPriceProducts = products.slice(0, 4);
+export const comboProducts = products.slice(2, 5);
+export const homemadeCookies = products.slice(4, 8);
+export const refinedOils = products.slice(0, 4);
 
 export const stats: StatItem[] = [
+
   { id: "1", label: "Districts", value: "35+" },
   { id: "2", label: "Villages", value: "10K+" },
   { id: "3", label: "Sustainable", value: "100%" },

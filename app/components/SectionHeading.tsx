@@ -16,7 +16,7 @@ export default function SectionHeading({ title }: SectionHeadingProps) {
         alt="icon"
         width={32}
         height={32}
-        className="w-[32px] h-[32px] sm:w-[50px] sm:h-[50px] object-contain animate-[spin_10s_linear_infinite]"
+        className="w-[32px] h-[32px] sm:w-[45px] sm:h-[45px] object-contain animate-[spin_10s_linear_infinite]"
       />
 
       {/* Text */}
@@ -30,7 +30,7 @@ export default function SectionHeading({ title }: SectionHeadingProps) {
         alt="icon"
         width={32}
         height={32}
-        className="w-[32px] h-[32px] sm:w-[50px] sm:h-[50px] object-contain animate-[spin_10s_linear_infinite]"
+        className="w-[32px] h-[32px] sm:w-[45px] sm:h-[45px] object-contain animate-[spin_10s_linear_infinite]"
       />
 
       {/* Right line */}

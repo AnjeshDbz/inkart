@@ -1,17 +1,4 @@
-export type Product = {
-  id: string;
-  slug: string;
-  title: string;
-  image: string;
-  price: number;
-  mrp: number;
-  rating: number;
-  stock: number;
-  brand: string;
-  category: string;
-  description: string;
-  highlights: string[];
-};
+import { Product } from "../../types";
 
 /* -----------------------------------
    PRODUCTS (using your existing images)

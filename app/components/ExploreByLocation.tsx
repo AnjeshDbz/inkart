@@ -17,8 +17,8 @@ export default function ExploreByLocationSlider() {
 
   const getCardWidth = () => {
     return (
-      sliderRef.current?.querySelector<HTMLElement>("[data-card]")?.offsetWidth ||
-      260
+      sliderRef.current?.querySelector<HTMLElement>("[data-card]")
+        ?.offsetWidth || 260
     );
   };
 
@@ -72,7 +72,7 @@ export default function ExploreByLocationSlider() {
   };
 
   return (
-    <section className="mx-auto w-full md:max-w-10xl px-4 py-12">
+    <section className="mx-auto w-full md:max-w-[1500px] px-4 py-12">
       {/* HEADER */}
       <div className="flex items-center justify-center md:justify-between mb-8">
         <h2 className="text-xl md:text-4xl font-semibold text-brand.primary">
@@ -133,9 +133,7 @@ export default function ExploreByLocationSlider() {
                 />
               </div>
 
-              <p className="mt-4 text-lg font-semibold">
-                {location.name}
-              </p>
+              <p className="mt-4 text-lg font-semibold">{location.name}</p>
             </div>
           ))}
         </div>
