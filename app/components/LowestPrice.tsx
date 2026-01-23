@@ -35,7 +35,7 @@ const products = [
 export default function LowestPrice() {
   return (
     <section className=" bg-[#EFEEFF]">
-      <div className="mx-auto w-full md:max-w-10xl px-4 py-10">
+      <div className="mx-auto w-full md:max-w-7xl px-4 py-10">
         {/* HEADING */}
         <SectionHeading title="Lowest Price Guaranteed" />
 
