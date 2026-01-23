@@ -33,7 +33,8 @@ export default function ProductDetailsPage() {
     product?.image,
   );
   const [qty, setQty] = useState(1);
-  const [tab, setTab] = useState<"desc" | "info">("desc");
+  const [tab, setTab] = useState<"desc" | "info" | "review">("desc");
+
 
   if (!product) {
     return (
