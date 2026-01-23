@@ -51,18 +51,20 @@ export default function ProductDetailsPage() {
 
   return (
     <section className="bg-white">
-      <div className="max-w-7xl mx-auto px-4 py-8">
-        {/* Back Button */}
-        <Link
-          href="/products"
-          className="flex items-center gap-2 text-primary hover:text-secondary mb-6"
-        >
-          <FontAwesomeIcon icon={faArrowLeft} />
-          Back to Products
-        </Link>
+      <div className="py-8">
+        <div className="max-w-7xl mx-auto">
+          {/* Back Button */}
+          <Link
+            href="/products"
+            className="flex items-center gap-2 text-primary hover:text-secondary mb-0"
+          >
+            <FontAwesomeIcon icon={faArrowLeft} />
+            Back to Products
+          </Link>
+        </div>
 
         {/* ================= TOP PRODUCT ================= */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+        <div className="max-w-7xl mx-auto  grid grid-cols-1 lg:grid-cols-2 gap-10 py-8 px-2">
           {/* LEFT: Image + Thumbnails */}
           <div>
             <div className="border  p-2 flex justify-center">
@@ -221,53 +223,99 @@ export default function ProductDetailsPage() {
         </div>
 
         {/* Tabs */}
-        <div className="mt-12">
-          <div className="flex gap-4 border-b">
-            <button
-              onClick={() => setTab("desc")}
-              className={`pb-2 ${tab === "desc" ? "border-b-2 border-orange-500 font-semibold" : ""}`}
-            >
-              Description
-            </button>
-            <button
-              onClick={() => setTab("info")}
-              className={`pb-2 ${tab === "info" ? "border-b-2 border-orange-500 font-semibold" : ""}`}
-            >
-              Additional Info
-            </button>
-          </div>
+        <div className="w-full bg-[#efeeff] py-8 px-2">
+          <div className="max-w-7xl mx-auto ">
+            {/* Tab Buttons */}
+            <div className="flex gap-3 bg-primary p-2 rounded-xl w-fit">
+              {[
+                { key: "desc", label: "Description" },
+                { key: "info", label: "Additional Info" },
+                { key: "review", label: "Review" },
+              ].map((t) => (
+                <button
+                  key={t.key}
+                  onClick={() => setTab(t.key as any)}
+                  className={`px-5 py-2 rounded-lg text-sm font-medium transition
+          ${
+            tab === t.key
+              ? "bg-white text-secondary shadow"
+              : "text-white hover:text-secondary"
+          }`}
+                >
+                  {t.label}
+                </button>
+              ))}
+            </div>
 
-          <div className="mt-4 text-gray-600 text-sm">
-            {tab === "desc" && (
-              <>
-                <p>{product.description}</p>
-                <ul className="list-disc list-inside mt-3 space-y-1">
-                  {product.highlights.map((h, i) => (
-                    <li key={i}>{h}</li>
-                  ))}
-                </ul>
-              </>
-            )}
+            {/* Tab Content */}
+            <div className="mt-8 text-sm text-gray-700 leading-relaxed">
+              {/* Description */}
+              {tab === "desc" && (
+                <div className="space-y-4">
+                  <h2 className="text-2xl font-bold text-black">
+                    {product.title}
+                  </h2>
 
-            {tab === "info" && (
-              <>
-                <p>
-                  <strong>Brand:</strong> {product.brand}
-                </p>
-                <p>
-                  <strong>Category:</strong> {product.category}
-                </p>
-                <p>
-                  <strong>Stock:</strong> {product.stock}
-                </p>
-              </>
-            )}
+                  <p>{product.description}</p>
+
+                  <div>
+                    <h3 className="font-semibold mt-4">Ingredients:</h3>
+                    <p>{product.ingredients}</p>
+                  </div>
+
+                  <div>
+                    <h3 className="font-semibold mt-4">Directions:</h3>
+                    <p>{product.directions}</p>
+                  </div>
+
+                  <div>
+                    <h3 className="font-semibold mt-4">Legal Disclaimer:</h3>
+                    <p className="text-gray-500">{product.disclaimer}</p>
+                  </div>
+
+                  <div>
+                    <h3 className="font-semibold mt-4">About this item:</h3>
+                    <ul className="list-disc ml-5 space-y-1">
+                      {product.highlights.map((h, i) => (
+                        <li key={i}>{h}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              )}
+
+              {/* Additional Info */}
+              {tab === "info" && (
+                <div className="space-y-2">
+                  <p>
+                    <strong>Brand:</strong> {product.brand}
+                  </p>
+                  <p>
+                    <strong>Category:</strong> {product.category}
+                  </p>
+                  <p>
+                    <strong>Stock:</strong> {product.stock}
+                  </p>
+                  <p>
+                    <strong>Rating:</strong> {product.rating}
+                  </p>
+                </div>
+              )}
+
+              {/* Review */}
+              {tab === "review" && (
+                <div className="text-gray-500">
+                  <p>No reviews yet.</p>
+                  <p className="mt-2">Be the first to review this product.</p>
+                </div>
+              )}
+            </div>
           </div>
         </div>
 
         {/* Related */}
         {relatedProducts.length > 0 && (
-          <div className="mt-16">
+          <div className="mt-16 px-2">
             <h2 className="text-2xl font-semibold mb-6 text-center">
               Related Products
             </h2>
