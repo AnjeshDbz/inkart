@@ -2,32 +2,40 @@
 
 import { useRef } from "react";
 import ProductCard from "./ProductCard";
-import { Product } from "../data/products"; // ✅ FIXED
+import type { Product } from "../data/products";
 
 export default function ProductCarousel({ products }: { products: Product[] }) {
   const ref = useRef<HTMLDivElement>(null);
 
   return (
-    <div aria-label="Product carousel" className="relative">
+    <div className="relative w-full">
+      {/* LEFT BUTTON */}
       <button
-        onClick={() => ref.current?.scrollBy({ left: -260, behavior: "smooth" })}
-        className="absolute left-0 top-1/2 z-10 bg-white shadow px-2 py-1"
+        onClick={() => ref.current?.scrollBy({ left: -300, behavior: "smooth" })}
+        className="absolute left-2 top-1/2 -translate-y-1/2 z-20 bg-white shadow-md w-9 h-9 rounded-full hidden md:flex items-center justify-center"
       >
         ‹
       </button>
 
+      {/* SCROLLER */}
       <div
         ref={ref}
-        className="flex gap-4 overflow-x-auto scrollbar-hide snap-x snap-mandatory px-8"
+        className="flex gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory px-10 scrollbar-hide"
       >
         {products.map((p) => (
-          <ProductCard key={p.id} product={p} />
+          <div
+            key={p.id}
+            className="min-w-[220px] sm:min-w-[240px] md:min-w-[260px] snap-start"
+          >
+            <ProductCard product={p} />
+          </div>
         ))}
       </div>
 
+      {/* RIGHT BUTTON */}
       <button
-        onClick={() => ref.current?.scrollBy({ left: 260, behavior: "smooth" })}
-        className="absolute right-0 top-1/2 z-10 bg-white shadow px-2 py-1"
+        onClick={() => ref.current?.scrollBy({ left: 300, behavior: "smooth" })}
+        className="absolute right-2 top-1/2 -translate-y-1/2 z-20 bg-white shadow-md w-9 h-9 rounded-full hidden md:flex items-center justify-center"
       >
         ›
       </button>
