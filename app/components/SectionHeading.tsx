@@ -6,21 +6,21 @@ type SectionHeadingProps = {
 
 export default function SectionHeading({ title }: SectionHeadingProps) {
   return (
-    <div className="flex items-center justify-center gap-4 my-10 overflow-hidden">
+    <div className="flex items-center justify-center gap-2 sm:gap-4 my-6 sm:my-10 px-3 text-center">
       {/* Left line */}
-      <div className="h-[3px] w-16 sm:w-32 bg-secondary" />
+      <div className="h-[2px] flex-1 max-w-[50px] sm:max-w-[140px] bg-secondary" />
 
       {/* Left icon */}
       <Image
         src="/images/heading-img.webp"
         alt="icon"
-        width={45}
-        height={45}
-        className="object-contain animate-[spin_8s_linear_infinite]"
+        width={32}
+        height={32}
+        className="object-contain animate-[spin_10s_linear_infinite]"
       />
 
-      {/* Dynamic Text */}
-      <h2 className="text-xl sm:text-4xl font-bold text-black text-center whitespace-nowrap">
+      {/* Text */}
+      <h2 className="text-xl sm:text-2xl md:text-4xl font-bold text-black leading-tight max-w-[160px] sm:max-w-none">
         {title}
       </h2>
 
@@ -28,13 +28,13 @@ export default function SectionHeading({ title }: SectionHeadingProps) {
       <Image
         src="/images/heading-img.webp"
         alt="icon"
-        width={45}
-        height={45}
-        className="object-contain animate-[spin_8s_linear_infinite]"
+        width={32}
+        height={32}
+        className="object-contain animate-[spin_10s_linear_infinite]"
       />
 
       {/* Right line */}
-      <div className="h-[3px] w-16 sm:w-32 bg-secondary" />
+      <div className="h-[2px] flex-1 max-w-[50px] sm:max-w-[140px] bg-secondary" />
     </div>
   );
 }
